@@ -1,46 +1,43 @@
-const int pinBleu = 0;   // GPIO0
-const int pinRouge = 2;  // GPIO2
-const int pinJaune = 4;  // GPIO4
-const int pinVert = 5;   // GPIO5
-const int seuil = 100;
+const int pinBleu = A1;
+const int pinRouge = A2;
+const int pinJaune = A3;
+const int pinVert = A4;
+
+const int seuil = 400;
+const int delai = 100;
 
 void setup() {
+  pinMode(pinBleu, INPUT);
+  pinMode(pinRouge, INPUT);
+  pinMode(pinJaune, INPUT);
+  pinMode(pinVert, INPUT);
   Serial.begin(9600);
 }
 
 void loop() {
-  // Lire les tensions sur les broches analogiques
-  int valeurBleu = analogRead(pinBleu);
-  int valeurRouge = analogRead(pinRouge);
-  int valeurJaune = analogRead(pinJaune);
-  int valeurVert = analogRead(pinVert);
-  
-  // Vérifier quelle broche a une tension significative
-  if (valeurBleu > seuil) {
-    Serial.print("B");
-    // Attendre jusqu'à ce que la tension redescende en dessous du seuil
+  if (analogRead(pinBleu) > seuil) {
+    Serial.println("B");
     while (analogRead(pinBleu) > seuil) {
-      delay(100);
-    }
+      delay(delai);
   }
-  if (valeurRouge > seuil) {
-    Serial.print("R");
+  }
+  if (analogRead(pinRouge) > seuil) {
+    Serial.println("R");
     while (analogRead(pinRouge) > seuil) {
-      delay(100);
+      delay(delai);
     }
   }
-  if (valeurJaune > seuil) {
-    Serial.print("Y");
-    while (analogRead(pinJaune) > seuil) {
-      delay(100);
-    }
-  }
-  if (valeurVert > seuil) {
-    Serial.print("G");
+  if (analogRead(pinVert) > seuil) {
+    Serial.println("G");
     while (analogRead(pinVert) > seuil) {
-      delay(100);
-      }
+      delay(delai);
+    }
   }
-  
-  delay(100); // Attendre un peu avant de lire à nouveau
+  if (analogRead(pinJaune) > seuil) {
+    Serial.println("Y");
+    while (analogRead(pinJaune) > seuil) {
+      delay(delai);
+    }
+  }
+  delay(500);
 }
