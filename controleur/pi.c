@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <dirent.h>
 #include <wiringPi.h>
 #include <wiringSerial.h>
 
@@ -13,21 +12,6 @@
 
 #define SEUIL 850
 #define DELAI 100
-
-void listerPortsSerie() {
-    DIR *rep;
-    struct dirent *lecture;
-    rep = opendir("/dev");
-    if (rep != NULL) {
-        printf("Ports série disponibles :\n");
-        while ((lecture = readdir(rep))) {
-            if (strncmp(lecture->d_name, "tty", 3) == 0) {
-                printf("/dev/%s\n", lecture->d_name);
-            }
-        }
-        closedir(rep);
-    }
-}
 
 int main() {
     wiringPiSetup();
@@ -41,9 +25,7 @@ int main() {
     int serial_port = -1;
     char choix[20];
 
-    listerPortsSerie();
-
-    printf("Entrez le nom du port série que vous souhaitez utiliser : ");
+    printf("Entrez le nom du port série de votre adaptateur WiFi USB : ");
     scanf("%s", choix);
 
     serial_port = serialOpen(choix, 9600);
