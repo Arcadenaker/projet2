@@ -1,9 +1,9 @@
 const int pinBleu = A1;
 const int pinRouge = A2;
 const int pinJaune = A3;
-const int pinVert = A4;
+const int pinVert = A5;
 
-const int seuil = 400;
+const int seuil = 850;
 const int delai = 100;
 
 void setup() {
