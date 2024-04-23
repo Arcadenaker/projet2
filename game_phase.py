@@ -7,6 +7,7 @@ def lire_donnees(nombre_mesures):
         for _ in range(nombre_mesures):
             donnees.append(ser.readline().strip().decode('utf-8'))
     return donnees
+
 """
 # Pour tester sans Arduino
 def lire_donnees(nombre_mesures):
