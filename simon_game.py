@@ -15,6 +15,7 @@ class SimonGame:
         }
         self.rectangles = {}
         self.sequence = self.generate_sequence(difficulty)
+        self.sequence = ["B", "B", "Y", "Y"]
         self.current_index = 0
         self.opacity = 128  # Opacité de l'image
         self.speed(speed)
