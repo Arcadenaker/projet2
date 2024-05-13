@@ -15,7 +15,7 @@ class SimonGame:
         }
         self.rectangles = {}
         self.sequence = self.generate_sequence(difficulty)
-        self.sequence = ["B", "B", "Y", "Y"]
+        #self.sequence = np.array(["B", "B", "B", "B"])
         self.current_index = 0
         self.opacity = 128  # Opacité de l'image
         self.speed(speed)
@@ -30,13 +30,13 @@ class SimonGame:
 
     def generate_sequence(self, difficulty):
         if difficulty == "Facile":
-            return np.random.choice(list(self.colors.keys()), size=5)
+            return np.random.choice(list(self.colors.keys()), size=4)
         elif difficulty == "Moyen":
-            return np.random.choice(list(self.colors.keys()), size=7)
+            return np.random.choice(list(self.colors.keys()), size=6)
         elif difficulty == "Difficile":
-            return np.random.choice(list(self.colors.keys()), size=9)
+            return np.random.choice(list(self.colors.keys()), size=7)
         elif difficulty == "Giga Chad":
-            return np.random.choice(list(self.colors.keys()), size=13)
+            return np.random.choice(list(self.colors.keys()), size=10)
         
     def speed(self, speed):
         if speed == "Lent":
@@ -58,11 +58,11 @@ class SimonGame:
         h = self.root.winfo_screenheight()
 
         for color, hex_color in self.colors.items():
-            if color == "R" or color == "G":
+            if color == "G" or color == "Y":
                 x = 0
             else:
                 x = w // 2
-            if color == "R" or color == "B":
+            if color == "G" or color == "R":
                 y = 0
             else:
                 y = h // 2
@@ -106,6 +106,4 @@ class SimonGame:
 
     def process_user_input(self):
         self.root.destroy()  # Ferme la fenêtre du menu
-        root = tk.Tk()
-        results = game_phase.UserInput(root, self.sequence)
-        root.mainloop()
+        game_phase.compare_answers(len(self.sequence), self.sequence)

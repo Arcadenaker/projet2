@@ -46,6 +46,8 @@ class MenuPage:
 
     def start_game(self):
         self.root.destroy()  # Ferme la fenêtre du menu
+        print("--------------------------------")
+        print("Démarrage d'une partie")
         root = tk.Tk()
         game = SimonGame(root, difficulty=self.difficulty.get(), speed=self.speed.get())
         root.mainloop()
