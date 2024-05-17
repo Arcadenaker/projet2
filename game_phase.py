@@ -26,7 +26,7 @@ def test_lire_donnees(n, correct_answer):
     return donnees
 
 def compare_answers(n, correct_answer):
-    answers = lire_donnees(n, correct_answer)
+    answers = np.array(lire_donnees(n, correct_answer))
     #answers = np.array(test_lire_donnees(n, correct_answer))
     print("Réponse de l'utilisateur:", answers)
     print("Réponse correcte:", correct_answer)
@@ -59,7 +59,7 @@ def show_results(result, correct_answer):
     label = tk.Label(result_frame, text=result_message, font=("Helvetica", 40), bg=background_color, fg="white")
     label.pack(pady=(100, 20))
     if not result:
-        label2 = tk.Label(result_frame, text=f"La couleur correcte était la couleur correcte était {correct_answer[len(correct_answer) - 1]}", font=("Helvetica", 20), bg=background_color, fg="white")
+        label2 = tk.Label(result_frame, text=f"Tu n'es pas très fort", font=("Helvetica", 20), bg=background_color, fg="white")
         label2.pack(pady=10)
 
     # Bouton pour retourner au menu

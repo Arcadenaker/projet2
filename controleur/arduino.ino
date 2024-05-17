@@ -4,7 +4,6 @@ const int pinVert = A4;
 const int pinRouge = A5;
 
 const int delai = 400;
-const int seuil = 450;
 
 void setup() {
   pinMode(pinBleu, INPUT);
@@ -27,7 +26,7 @@ void loop() {
       delay(delai);
     }
   }
-  if (analogRead(pinVert) > 380) {
+  if (analogRead(pinVert) > 370) {
     Serial.println("G");
     while (analogRead(pinVert) > 310) {
       delay(delai);

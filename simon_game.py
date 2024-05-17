@@ -34,7 +34,7 @@ class SimonGame:
         elif difficulty == "Moyen":
             return np.random.choice(list(self.colors.keys()), size=6)
         elif difficulty == "Difficile":
-            return np.random.choice(list(self.colors.keys()), size=7)
+            return np.random.choice(list(self.colors.keys()), size=8)
         elif difficulty == "Giga Chad":
             return np.random.choice(list(self.colors.keys()), size=10)
         
